@@ -1,12 +1,22 @@
 import { Router } from 'express';
-import { getSubtasks, createNewSubtask, updateSubtask, removeSubtask } from '../controllers/subtaskController';
-import { authenticateToken } from '../middlewares/authMiddleware';
+import {
+  getTasks,
+  getTask,
+  createNewTask,
+  updateTask,
+  removeTask,
+} from '../controllers/taskController';
+import { authenticateToken } from '../middleware/authMiddleware';
 
 const router = Router();
 
-router.get('/:taskId', authenticateToken, getSubtasks);
-router.post('/:taskId', authenticateToken, createNewSubtask);
-router.put('/:id', authenticateToken, updateSubtask);
-router.delete('/:id/:taskId', authenticateToken, removeSubtask);
+// Aplica o middleware JWT antes das rotas
+router.use(authenticateToken);
+
+router.get('/', getTasks);
+router.get('/:id', getTask);
+router.post('/', createNewTask);
+router.put('/:id', updateTask);
+router.delete('/:id', removeTask);
 
 export default router;

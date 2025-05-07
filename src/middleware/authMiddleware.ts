@@ -12,13 +12,12 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     return;
   }
 
-  jwt.verify(token, JWT_SECRET, (err, user) => {
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
       res.status(403).json({ message: 'Token inválido' });
       return;
     }
-
-    (req as any).user = user; // anexamos o usuário ao request para próximos handlers
+    (req as any).user = decoded;
     next();
   });
 };

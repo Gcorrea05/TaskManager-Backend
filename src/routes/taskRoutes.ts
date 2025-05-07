@@ -1,13 +1,21 @@
 import { Router } from 'express';
-import { getTasks, getTask, createNewTask, updateTask, removeTask } from '../controllers/taskController';
-import { authenticateToken } from '../middlewares/authMiddleware';
+import {
+  getTasks,
+  getTask,
+  createNewTask,
+  updateTask,
+  removeTask,
+} from '../controllers/taskController';
+import { authenticateToken } from '../middleware/authMiddleware';
 
 const router = Router();
 
-router.get('/', authenticateToken, getTasks);
-router.get('/:id', authenticateToken, getTask);
-router.post('/', authenticateToken, createNewTask);
-router.put('/:id', authenticateToken, updateTask);
-router.delete('/:id', authenticateToken, removeTask);
+router.use(authenticateToken); // Protege todas as rotas abaixo
+
+router.get('/', getTasks);
+router.get('/:id', getTask);
+router.post('/', createNewTask);
+router.put('/:id', updateTask);
+router.delete('/:id', removeTask);
 
 export default router;
