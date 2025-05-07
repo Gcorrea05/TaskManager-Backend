@@ -1,0 +1,49 @@
+{
+  "name": "taskmanager-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Task Manager",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gcorrea05/TaskManager-Backend.git"
+  },
+  "keywords": [
+    "task-manager",
+    "backend",
+    "nodejs",
+    "express",
+    "typescript",
+    "mysql"
+  ],
+  "author": "Gabriel Correa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gcorrea05/TaskManager-Backend/issues"
+  },
+  "homepage": "https://github.com/Gcorrea05/TaskManager-Backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.15.14",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
