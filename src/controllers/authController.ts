@@ -34,7 +34,11 @@ export const register = async (req: Request, res: Response, next: NextFunction):
 export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { email, password } = req.body;
+    console.log('REQ BODY:', req.body);
+
     const user = await findUserByEmail(email);
+    console.log('USER FOUND:', user);
+
     if (!user) {
       res.status(400).json({ message: 'Usuário não encontrado' });
       return;

@@ -1,4 +1,5 @@
 import pool from './db';
+import  db  from './db';
 import { RowDataPacket } from 'mysql2';
 
 export interface DBUser extends RowDataPacket {
@@ -27,4 +28,8 @@ export const createUser = async (user: NewUser): Promise<void> => {
     'INSERT INTO users (id, name, email, password, role) VALUES (?, ?, ?, ?, ?)',
     [user.id, user.name, user.email, user.password, user.role]
   );
+};
+export const getAllUsers = async () => {
+  const [rows] = await db.query('SELECT id, name, email FROM users');
+  return rows;
 };
